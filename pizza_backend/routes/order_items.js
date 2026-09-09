@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -28,7 +29,8 @@ router.get('/order/:id', (req, res) => {
 });
 
 // POST create new order item
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
+
     const { order_id, pizza_id, quantity, price } = req.body;
 
     db.query(

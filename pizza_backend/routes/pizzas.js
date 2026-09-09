@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -20,7 +21,9 @@ router.get('/:id', (req, res) => {
 });
 
 // POST create new pizza
-router.post('/', (req, res) => {
+router.post('/', auth, admin, (req, res) => {
+
+
     const { name, price, description, image } = req.body;
 
     db.query(
@@ -34,7 +37,9 @@ router.post('/', (req, res) => {
 });
 
 // DELETE pizza
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, admin, (req, res) => {
+
+
     const pizzaId = req.params.id;
     db.query('DELETE FROM pizzas WHERE id = ?', [pizzaId], (err) => {
         if (err) throw err;

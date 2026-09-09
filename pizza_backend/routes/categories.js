@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -20,7 +21,8 @@ router.get('/:id', (req, res) => {
 });
 
 // POST create new category
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
+
     const { name, description } = req.body;
 
     db.query(
@@ -34,7 +36,8 @@ router.post('/', (req, res) => {
 });
 
 // DELETE category
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
+
     const categoryId = req.params.id;
     db.query('DELETE FROM categories WHERE id = ?', [categoryId], (err) => {
         if (err) throw err;
