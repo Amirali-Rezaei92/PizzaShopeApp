@@ -1,0 +1,34 @@
+.admin-sidebar {
+    width: 220px;
+    background: #1e1e1e;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.admin-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-sidebar a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.admin-sidebar a.active {
+    background: #ff4d4d;
+    color: white;
+}

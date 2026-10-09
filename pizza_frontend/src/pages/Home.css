@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap");
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: "Irish Grover", cursive;
+}
+
+.home {
+  background: linear-gradient(180deg, #0e0400 0%, #160904 35%, #381709 100%);
+  width: 100%;
+  margin: 0;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(180deg, #0e0400 0%, #291107 35%, #381709 80%);
+}
+
+.hero img {
+  width: 100%;
+  display: block;
+}
+
+/* SECTION */
+.section {
+  margin-top: 70px;
+  padding: 0 40px;
+  background-color: #0e0400;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #ffb066;
+  text-align: center;
+}
+
+/* CARDS */
+.popular-flex,
+.veg-flex {
+  border-top: 1px rgb(125, 80, 35);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  padding-bottom: 100px;
+}
+
+.price {
+  color: #ffa552;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 80px;
+  padding: 30px;
+  text-align: center;
+  color: #b8b8b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero img {
+    height: auto;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}

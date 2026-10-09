@@ -1,0 +1,17 @@
+.pizzas-page {
+    color: #f9c27d;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.title {
+    font-size: 32px;
+    text-align: center;
+}
+
+.pizzas-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; 
+}

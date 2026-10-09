@@ -46,20 +46,24 @@ router.post('/', auth, (req, res) => {
     );
 });
 
-// UPDATE order status
-router.put('/:id', (req, res) => {
+// Update order status
+router.put("/:id/status", (req, res) => {
     const orderId = req.params.id;
     const { status } = req.body;
 
-    db.query(
-        'UPDATE orders SET status=? WHERE id=?',
-        [status, orderId],
-        (err) => {
-            if (err) throw err;
-            res.json({ message: 'Order updated' });
-        }
-    );
+    const query = `
+    UPDATE orders
+    SET status = ?
+    WHERE id = ?
+    `;
+
+    db.query(query, [status, orderId], (err) => {
+        if (err) throw err;
+
+        res.json({ message: "Status updated successfully" });
+    });
 });
+
 
 // DELETE order
 router.delete('/:id', (req, res) => {

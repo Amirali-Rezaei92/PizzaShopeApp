@@ -1,0 +1,111 @@
+.pizza-details {
+ padding: 150px;
+background: linear-gradient(
+        180deg, 
+        #0E0400 0%,
+        #160904 35%,
+        #381709 100%
+    );
+    color: #fff;
+    font-family: 'Irish Grover', cursive;
+}
+
+/* IMAGE BOX */
+.details-image-box {
+    width: 100%;
+    height: 350px;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+}
+
+.pizza-details-image {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+/* TITLE */
+.details-title {
+    font-size: 42px;
+    color: #FFB066;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* PRICE */
+.details-price {
+    font-size: 28px;
+    color: #FFA552;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* CATEGORY */
+.details-category {
+    font-size: 20px;
+    color: #e6c7a1;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.details-category span {
+    color: #ffaf5e;
+}
+
+/* DESCRIPTION */
+.details-description {
+    background: rgba(255, 255, 255, 0);
+    padding: 20px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* INGREDIENTS */
+.details-ingredients {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* BUTTON */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #ff4d00;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: #ff6a2a;
+    transform: translateY(-3px);
+}
+
+/* LOADING & ERROR */
+.loading,
+.error {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffaf5e;
+}
+
+
+.pizza-details button {
+    display: block;
+    margin: 40px auto; /* وسط افقی */
+    width: 200px;
+}

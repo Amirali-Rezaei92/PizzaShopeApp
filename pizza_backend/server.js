@@ -7,6 +7,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve uploaded images
+app.use("/uploads", express.static("uploads"));
+
 // Routes
 const loginRoutes = require('./routes/login');
 const pizzaRoutes = require('./routes/pizzas');
@@ -16,8 +19,7 @@ const pizzaCategoryRoutes = require('./routes/pizza_category');
 const orderRoutes = require('./routes/orders');
 const orderItemRoutes = require('./routes/order_items');
 const powerRoutes = require('./routes/powers');
-
-
+const statsRouter = require("./routes/stats");
 
 app.use('/powers', powerRoutes);
 app.use('/order-items', orderItemRoutes);
@@ -27,7 +29,8 @@ app.use('/categories', categoryRoutes);
 app.use('/pizzas', pizzaRoutes);
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
-
+app.use("/stats", statsRouter);
+app.use("/images", express.static("public/images"));
 
 
 app.get('/', (req, res) => {

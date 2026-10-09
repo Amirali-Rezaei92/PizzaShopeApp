@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-right: 0;
+    padding-bottom: 20px;
+
+    background: linear-gradient(
+        180deg, 
+        #0E0400 0%,
+        #291107 60%,
+        #381709c5 80%,
+        #38170964 95%
+    );
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    font-family: 'Irish Grover', cursive;
+    z-index: 200;
+}
+.cart-icon {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #ffaf5e;
+    font-size: 20px;
+}
+
+.cart-count {
+    background: #ff4d4d;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* LOGO */
+.logo img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    z-index: 10;
+    top: 10px;
+    left: 30px;
+}
+
+/* NAV LINKS */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    transition: 0.3s ease;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffaf5e;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    color: #FFA552;
+    transform: translateY(-2px);
+}
+
+/* BURGER BUTTON */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.burger span {
+    width: 30px;
+    height: 4px;
+    background: #ffaf5e;
+    transition: 0.3s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    /* Show burger */
+    .burger {
+        display: flex;
+    }
+
+    /* Hide nav by default */
+    .nav {
+        position: absolute;
+        top: -250px;
+        right: 0;
+        display: none;
+        background: rgba(34, 9, 0, 0.95);
+        width: 200px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 0 0 0 10px;
+        transform: translateY(100%);
+        transition: 0.3s ease;
+        border-left: 1px solid rgba(104, 63, 29, 0);
+    }
+
+    /* When open */
+    .nav.open {
+        transform: translateY(360px);
+        transition: 0.3s ease-out;
+        display: flex;
+    }
+
+    /* Logo smaller */
+    .logo img {
+        width: 90px;
+        height: 90px;
+        top: 10px;
+        left: 5px;
+    }
+   .cart-icon {
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    left: 47%;
+}
+
+}
+
+/* BURGER ANIMATION */
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
