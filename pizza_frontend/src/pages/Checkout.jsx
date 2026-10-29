@@ -1,12 +1,26 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
+import "./Checkout.css";
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const { cart } = useContext(CartContext);
+    const { cart, clearCart } = useContext(CartContext);
 
-    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    // اگر سبد خالی بود → اجازه ورود به Checkout نده
+    useEffect(() => {
+        if (cart.length === 0) {
+            navigate("/cart");
+        }
+    }, [cart, navigate]);
+
+    const totalPrice = cart.reduce(
+        (sum, item) => sum + item.price * item.qty,
+        0
+    );
 
     const [form, setForm] = useState({
         name: "",
@@ -14,63 +28,93 @@ const Checkout = () => {
         address: "",
     });
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError("");
 
-        const response = await fetch("http://localhost:3001/orders", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                ...form,
-                cart,
-                totalPrice,
-            }),
-        });
+        try {
+            const response = await fetch("http://localhost:3001/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    ...form,
+                    cart,
+                    totalPrice,
+                }),
+            });
 
-        const data = await response.json();
+            if (!response.ok) {
+                throw new Error("Server error");
+            }
 
-        navigate("/order-success", {
-            state: { orderId: data.orderId }
-        });
+            const data = await response.json();
+
+            // پاک کردن سبد خرید بعد از سفارش
+            clearCart();
+
+            navigate("/order-success", {
+                state: { orderId: data.orderId },
+            });
+
+        } catch (err) {
+            setError("Something went wrong. Please try again.");
+        }
+
+        setLoading(false);
     };
 
     return (
-        <div className="checkout-page">
-            <h2>Checkout</h2>
+        <div className="home">
+            <Navbar/>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="name"
-                    placeholder="Your Name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                />
 
-                <input
-                    name="email"
-                    placeholder="Email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                />
+            <div className="checkout-page">
+                <h2>Checkout</h2>
 
-                <input
-                    name="address"
-                    placeholder="Address"
-                    value={form.address}
-                    onChange={handleChange}
-                    required
-                />
+                <form onSubmit={handleSubmit} className="checkout-form">
 
-                <button type="submit">Place Order</button>
-            </form>
+                    <input
+                        name="name"
+                        placeholder="Your Name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                    />
 
-            <h3>Total: {totalPrice.toFixed(2)} €</h3>
+                    <input
+                        name="email"
+                        placeholder="Email"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        name="address"
+                        placeholder="Address"
+                        value={form.address}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    {error && <p className="error">{error}</p>}
+
+                    <button type="submit" disabled={loading}>
+                        {loading ? "Processing..." : "Place Order"}
+                    </button>
+                </form>
+
+                <h3>Total: € {totalPrice.toFixed(2)}</h3>
+            </div>
+            <Footer />
         </div>
     );
 };

@@ -11,17 +11,16 @@
         #291107 60%,
         #381709c5 80%,
         );
-
 }
+
 .cart-page {
-    
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
     color: #f5f5f5;
     background: #7a4517;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 30px rgba(169, 57, 57, 0.6);
 }
 
 /* تیتر */
@@ -39,7 +38,6 @@
     text-align: center;
     color: #ccc;
     font-size: 22px;
-    
 }
 
 /* لیست آیتم‌ها */
@@ -55,7 +53,7 @@
     align-items: center;
     gap: 16px;
     padding: 12px 16px;
-    background: #1e1e1e;
+    background: #451f00;
     border-radius: 10px;
     border: 1px solid #2a2a2a;
 }
@@ -79,6 +77,8 @@
 }
 
 .cart-item .info p {
+    font-family: 'Arial', cursive;
+    font-weight: bold;
     margin: 2px 0;
     font-size: 14px;
     color: #bbbbbb;
@@ -90,7 +90,7 @@
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    background: #ff4d4d;
+    background: #f72525;
     color: white;
     font-size: 13px;
     transition: background 0.2s ease, transform 0.1s ease;
@@ -103,20 +103,68 @@
 
 /* دکمه پاک کردن کل سبد */
 .clear-btn {
+    display: inline-block;
     margin-top: 20px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background: #333;
-    color: #f5f5f5;
-    font-size: 14px;
+    padding: 12px 20px;
+    background: #ff5900;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Arial', cursive;
+    font-size: 16px;
+    font-weight: 600;
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .clear-btn:hover {
     background: #444;
     transform: translateY(-1px);
+}
+.btns{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* خلاصه پرداخت */
+.cart-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    color: #f5f5f5;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.cart-summary p {
+    font-family: 'Arial', cursive;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 8px 0;
+    color: #e0e0e0;
+}
+
+/* دکمه رفتن به پرداخت */
+.checkout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #246001;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Arial', cursive;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.checkout-btn:hover {
+    background: #e68900;
+    transform: translateY(-2px);
 }
 
 /* موبایل */

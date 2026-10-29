@@ -12,7 +12,6 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    // افزودن پیتزا به سبد خرید
     const addToCart = (pizza) => {
         setCart((prev) => {
             const existing = prev.find((item) => item.id === pizza.id);
@@ -29,24 +28,20 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    // حذف پیتزا از سبد خرید (کم کردن qty یا حذف کامل)
     const removeFromCart = (id) => {
         setCart((prev) => {
             const item = prev.find((p) => p.id === id);
 
-            // اگر فقط یک عدد مونده بود → حذف کامل
             if (item.qty === 1) {
                 return prev.filter((p) => p.id !== id);
             }
 
-            // اگر بیشتر از یک عدد بود → qty کم کن
             return prev.map((p) =>
                 p.id === id ? { ...p, qty: p.qty - 1 } : p
             );
         });
     };
 
-    // پاک کردن کل سبد خرید
     const clearCart = () => setCart([]);
 
     return (
