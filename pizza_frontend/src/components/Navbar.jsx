@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { cart } = useCart(); 
+    const { cart } = useCart();
 
     return (
         <header className="navbar">
@@ -29,12 +29,13 @@ const Navbar = () => {
             </div>
 
             {/* NAV LINKS */}
+
             <nav className={open ? "nav open" : "nav"}>
-                <a href="/">Home</a>
-                <a href="/pizzas">Pizzas</a>
-                <a href="/about">About Us</a>
-                <a href="/contact">Contact</a>
-                <a href="/login">Log In</a>
+                <Link to="/">Home</Link>
+                <Link to="/pizzas">Pizzas</Link>
+                <Link to="/about">About Us</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/login">Log In</Link>
             </nav>
 
             {/* CART ICON */}
