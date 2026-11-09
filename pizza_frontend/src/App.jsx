@@ -13,6 +13,8 @@ import PizzaDetails from "./pages/PizzaDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Pizzas from "./pages/Pizzas";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 
 
@@ -26,6 +28,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/pizzas" element={<Pizzas />} />
+        <Route path="/about" element={<About />}/>
+        <Route path="/contact" element={<Contact />}/>
+
 
         <Route
           path="/admin/orders"

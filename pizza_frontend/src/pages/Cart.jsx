@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 const Cart = () => {
     const { cart, removeFromCart, clearCart } = useCart();
 
-    // محاسبه تعداد کل پیتزاها
     const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
-    // محاسبه قیمت کل
     const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
     return (
@@ -46,7 +44,6 @@ const Cart = () => {
                             ))}
                         </div>
 
-                        {/* بخش پرداخت */}
                         <div className="cart-summary">
                             <p>Total Items: <strong>{totalItems}</strong></p>
                             <p>Total Price: <strong>€ {totalPrice.toFixed(2)}</strong></p>

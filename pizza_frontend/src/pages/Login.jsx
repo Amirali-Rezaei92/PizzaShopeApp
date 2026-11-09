@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Login.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -21,38 +23,47 @@ export default function Login() {
             localStorage.setItem("token", token);
 
             alert("Login successful");
+            setError("");
         } catch (err) {
-            setError("Login failed");
+            setError("Login failed. Please check your email and password.");
         }
     };
 
     return (
-        <div style={{ padding: "20px" }}>
-            <h2>Login</h2>
+        <>
+            <Navbar />
 
-            <form onSubmit={handleLogin}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+            <main className="login">
+                <div className="login-container">
+                    <h1>Login</h1>
 
-                <br /><br />
+                    <form className="login-form" onSubmit={handleLogin}>
+                        <input
+                            className="login-input"
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                        <input
+                            className="login-input"
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-                <br /><br />
+                        <button className="login-button" type="submit">
+                            Login
+                        </button>
 
-                <button type="submit">Login</button>
+                        {error && <p className="login-error">{error}</p>}
+                    </form>
+                </div>
+            </main>
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
-            </form>
-        </div>
+            <Footer />
+        </>
     );
 }

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { cart } = useCart(); // ⭐ تعداد آیتم‌های سبد خرید
+    const { cart } = useCart(); 
 
     return (
         <header className="navbar">
